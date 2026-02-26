@@ -30,21 +30,21 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "Pea Shoots Premium",
         description: "Freshly harvested shoots with bright flavor and texture.",
         price: "$155.00",
-        image: "assets/images/tab-3.webp",
+        image: "assets/images/tab-4.webp",
       },
 
          {
         title: "Pea Shoots Premium",
         description: "Freshly harvested shoots with bright flavor and texture.",
         price: "$155.00",
-        image: "assets/images/tab-3.webp",
+        image: "assets/images/tab-5.webp",
       },
 
          {
         title: "Pea Shoots Premium",
         description: "Freshly harvested shoots with bright flavor and texture.",
         price: "$155.00",
-        image: "assets/images/tab-3.webp",
+        image: "assets/images/tab-6.webp",
       },
     ],
     radish: [
