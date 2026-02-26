@@ -288,31 +288,48 @@
       <div class="max-w-[1490px] w-full mx-auto">
         <div>
           <!-- tab-button -->
-          <ul class="flex items-center gap-[80px] justify-center mb-[56px]">
+          <ul
+            id="product-tabs"
+            class="flex items-center gap-[80px] justify-center mb-[56px] flex-wrap"
+            role="tablist"
+            aria-label="Product categories"
+          >
             <li>
               <button
-                class="font-semibold text-[22px] bg-accent text-white rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] bg-accent text-white rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="true"
+                data-tab="pea"
               >
                 Pea
               </button>
             </li>
             <li>
               <button
-                class="font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="false"
+                data-tab="radish"
               >
                 Radish
               </button>
             </li>
             <li>
               <button
-                class="font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="false"
+                data-tab="sunflower"
               >
                 Sunflower
               </button>
             </li>
             <li>
               <button
-                class="font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="false"
+                data-tab="wheatgrass"
               >
                 Wheatgrass
               </button>
@@ -320,7 +337,10 @@
 
             <li>
               <button
-                class="font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="false"
+                data-tab="marijuana"
               >
                 Marijuana
               </button>
@@ -328,7 +348,10 @@
 
             <li>
               <button
-                class="font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                class="js-tab-btn font-semibold text-[22px] text-[#484A57] rounded-[100px] py-[14px] px-[36px] landig-[22px]"
+                role="tab"
+                aria-selected="false"
+                data-tab="bamboo-gras"
               >
                 Bamboo Gras
               </button>
@@ -338,176 +361,12 @@
 
           <!-- tab-content 1 -->
           <div
+            id="product-tab-content"
+            role="tabpanel"
+            aria-live="polite"
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[60px]"
           >
-            <div class="border border-[#C1CBDE] rounded-[40px]">
-              <figure class="block mb-[26px] rounded-[38px] overflow-hidden">
-                <img
-                  src="assets/images/tab-1.webp"
-                  alt="tab-1"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="p-[0px_15px_62px] text-center">
-                <h3 class="text-[24px] font-semibold text-darklight mb-[10px]">
-                  Premium Cactus
-                </h3>
-                <p
-                  class="text-secondary font-normal text-[14px] landig-[22px] mb-[22px]"
-                >
-                  At SuddhLeaf, we believe healthy food should be honest,
-                  sustainable, and delicious.
-                </p>
-                <span class="text-darklight font-semibold text-[24px]"
-                  >$.141.00</span
-                >
-                <div class="mt-[36px]">
-                  <a
-                    href="#"
-                    class="text-[18px] py-[3px] pr-[3px] pl-[29px] rounded-full inline-flex items-center gap-[14px] text-dark font-semibold border border-accent"
-                    >Buy Now
-                    <span
-                      class="bg-accent rounded-full w-[47px] h-[47px] inline-flex items-center justify-center"
-                      ><svg
-                        class="w-[22px] h-[22px]"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13.2275 5.43585L18.7917 11L13.2275 16.5642"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M3.20837 11H18.6359"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg> </span
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="border border-[#C1CBDE] rounded-[40px]">
-              <figure class="block mb-[26px] rounded-[38px] overflow-hidden">
-                <img
-                  src="assets/images/tab-2.webp"
-                  alt="tab-1"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="p-[0px_15px_62px] text-center">
-                <h3 class="text-[24px] font-semibold text-darklight mb-[10px]">
-                  Premium Cactus
-                </h3>
-                <p
-                  class="text-secondary font-normal text-[14px] landig-[22px] mb-[22px]"
-                >
-                  At SuddhLeaf, we believe healthy food should be honest,
-                  sustainable, and delicious.
-                </p>
-                <span class="text-darklight font-semibold text-[24px]"
-                  >$.141.00</span
-                >
-                <div class="mt-[36px]">
-                  <a
-                    href="#"
-                    class="text-[18px] py-[3px] pr-[3px] pl-[29px] rounded-full inline-flex items-center gap-[14px] text-dark font-semibold border border-accent"
-                    >Buy Now
-                    <span
-                      class="bg-accent rounded-full w-[47px] h-[47px] inline-flex items-center justify-center"
-                      ><svg
-                        class="w-[22px] h-[22px]"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13.2275 5.43585L18.7917 11L13.2275 16.5642"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M3.20837 11H18.6359"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg> </span
-                  ></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="border border-[#C1CBDE] rounded-[40px]">
-              <figure class="block mb-[26px] rounded-[38px] overflow-hidden">
-                <img
-                  src="assets/images/tab-3.webp"
-                  alt="tab-1"
-                  loading="lazy"
-                />
-              </figure>
-              <div class="p-[0px_15px_62px] text-center">
-                <h3 class="text-[24px] font-semibold text-darklight mb-[10px]">
-                  Premium Cactus
-                </h3>
-                <p
-                  class="text-secondary font-normal text-[14px] landig-[22px] mb-[22px]"
-                >
-                  At SuddhLeaf, we believe healthy food should be honest,
-                  sustainable, and delicious.
-                </p>
-                <span class="text-darklight font-semibold text-[24px]"
-                  >$.141.00</span
-                >
-                <div class="mt-[36px]">
-                  <a
-                    href="#"
-                    class="text-[18px] py-[3px] pr-[3px] pl-[29px] rounded-full inline-flex items-center gap-[14px] text-dark font-semibold border border-accent"
-                    >Buy Now
-                    <span
-                      class="bg-accent rounded-full w-[47px] h-[47px] inline-flex items-center justify-center"
-                      ><svg
-                        class="w-[22px] h-[22px]"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13.2275 5.43585L18.7917 11L13.2275 16.5642"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M3.20837 11H18.6359"
-                          stroke="#fff"
-                          stroke-width="2.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg> </span
-                  ></a>
-                </div>
-              </div>
-            </div>
-            
+            <p class="col-span-full text-center text-secondary">Loading products...</p>
           </div>
           <!-- tab-content -->
         </div>
