@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  initTestimonialSwiper();
+
   var tabButtons = Array.from(document.querySelectorAll(".js-tab-btn"));
   var tabContent = document.getElementById("product-tab-content");
 
@@ -220,3 +222,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setActiveTab(tabButtons[0].dataset.tab);
 });
+
+function initTestimonialSwiper() {
+  if (typeof window.Swiper !== "function") {
+    return;
+  }
+
+  var sliderElement = document.querySelector(".testimonial-swiper");
+  if (!sliderElement) {
+    return;
+  }
+
+  var previewImage = document.querySelector("[data-preview-image]");
+  var previewName = document.querySelector("[data-preview-name]");
+  var previewRole = document.querySelector("[data-preview-role]");
+  var sourceSlides = Array.from(
+    sliderElement.querySelectorAll(".swiper-slide")
+  ).map(function (slide) {
+    return {
+      name: slide.dataset.name || "",
+      role: slide.dataset.role || "",
+      image: slide.dataset.image || "",
+      imageAlt: slide.dataset.imageAlt || slide.dataset.name || "Client",
+    };
+  });
+
+  function updatePreview(index) {
+    if (!sourceSlides.length || !previewImage || !previewName || !previewRole) {
+      return;
+    }
+
+    var nextIndex = (index + 1) % sourceSlides.length;
+    var nextSlide = sourceSlides[nextIndex];
+    previewImage.src = nextSlide.image;
+    previewImage.alt = nextSlide.imageAlt;
+    previewName.textContent = nextSlide.name;
+    previewRole.textContent = nextSlide.role;
+  }
+
+  var swiper = new window.Swiper(sliderElement, {
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+    allowTouchMove: false,
+    loop: true,
+    speed: 500,
+    navigation: {
+      prevEl: ".testimonial-prev",
+      nextEl: ".testimonial-next",
+    },
+    on: {
+      init: function () {
+        updatePreview(this.realIndex);
+      },
+      slideChangeTransitionStart: function () {
+        updatePreview(this.realIndex);
+      },
+    },
+  });
+
+  updatePreview(swiper.realIndex || 0);
+}

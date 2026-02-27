@@ -11,3 +11,57 @@ h6,
 a {
   font-family: "Poppins", sans-serif;
 }
+
+.testimonial-swiper {
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-swiper .swiper-slide {
+  background: transparent;
+}
+
+.testimonial-main-card {
+  min-height: 426px;
+}
+
+.testimonial-stack {
+  position: relative;
+}
+
+.testimonial-preview-card {
+  margin-top: -30px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-divider {
+  position: absolute;
+  top: 40px;
+  bottom: 15px;
+  left: 50%;
+  width: 1px;
+  background: #d1d5e3;
+  transform: translateX(-50%);
+}
+
+.testimonial-divider::before,
+.testimonial-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #a8adbf;
+  transform: translateX(-50%);
+}
+
+.testimonial-divider::before {
+  top: -6px;
+}
+
+.testimonial-divider::after {
+  bottom: -6px;
+}

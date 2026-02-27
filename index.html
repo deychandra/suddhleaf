@@ -36,6 +36,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -667,7 +671,8 @@
 
     <section class="pt-[160px] pb-[158px]">
       <div class="max-w-[1490px] w-full mx-auto">
-        <div class="grid grid-cols-2">
+        <div class="testimonial-layout grid grid-cols-1 lg:grid-cols-2 gap-[50px] lg:gap-[80px] relative">
+          <div class="testimonial-divider hidden lg:block" aria-hidden="true"></div>
           <div>
             <div class="max-w-[548px] w-full">
               <h5 class="text-darklight text-[20px] font-medium mb-[9px]">
@@ -687,7 +692,8 @@
               <!-- Carousel-Button -->
               <div class="flex items-center gap-[29px] mt-[60px]">
                 <button
-                  class="w-[40px] h-[40px] rounded-full border border-[#878990F0] flex items-center justify-center"
+                  type="button"
+                  class="testimonial-prev w-[40px] h-[40px] rounded-full border border-[#878990F0] flex items-center justify-center"
                 >
                   <svg
                     width="12"
@@ -707,7 +713,8 @@
                   </svg>
                 </button>
                 <button
-                  class="w-[40px] h-[40px] rounded-full border border-[#878990F0] flex items-center justify-center"
+                  type="button"
+                  class="testimonial-next w-[40px] h-[40px] rounded-full border border-[#878990F0] flex items-center justify-center"
                 >
                   <svg
                     width="12"
@@ -731,72 +738,155 @@
             </div>
           </div>
           <div>
-            <!-- Carousel-Slider -->
-            <div class="bg-white p-[61px_65px_67px_47px] rounded-[50px] shadow-[0px_60px_120px_0px_#A2A6B840]  relative z-1">
-              <p
-                class="pb-[32px] border-b border-[#B4B6BD] text-[14px] landig-[24px] text-secondary"
-              >
-                Flipspaces came in as an one-stop solution for all our oﬃce
-                expansion needs. They understood what we needed from the outset.
-                They were prompt in understanding our requirements and turned it
-                into something amazing. What stands them apart is the Virtual
-                Reality Technology that helped us visualize the future oﬃce
-                space and make changes in real time, thus saving a lot of our
-                time.
-              </p>
-
-              <div class="mt-[37px] flex items-center gap-[15px]">
-                <figure
-                  class="w-[59px] h-[59px] rounded-full overflow-hidden border-[2px] border-[#FFD41D]"
+            <div class="testimonial-stack">
+              <div class="swiper testimonial-swiper">
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide"
+                  data-name="James Smith"
+                  data-role="CEO | ICICI Prudentials"
+                  data-image="assets/images/user.webp"
+                  data-image-alt="James Smith"
                 >
-                  <img
-                    src="assets/images/user.webp"
-                    alt="user"
-                    class="w-full h-full"
-                  />
-                </figure>
-                <div class="flex flex-col">
-                  <strong class="text-[#26252C] text-[15px] font-bold mb-[4px]"
-                    >James Smith</strong
+                  <div
+                    class="testimonial-main-card bg-white p-[61px_65px_67px_47px] rounded-[50px] shadow-[0px_60px_120px_0px_#A2A6B840]"
                   >
-                  <small class="text-[#676776] text-[13px]">CEO | icici Prudentials</small>
+                    <p
+                      class="pb-[32px] border-b border-[#B4B6BD] text-[14px] landig-[24px] text-secondary"
+                    >
+                      Flipspaces came in as an one-stop solution for all our
+                      office expansion needs. They understood what we needed
+                      from the outset. They were prompt in understanding our
+                      requirements and turned it into something amazing. What
+                      stands them apart is the Virtual Reality Technology that
+                      helped us visualize the future office space and make
+                      changes in real time, thus saving a lot of our time.
+                    </p>
+                    <div class="mt-[37px] flex items-center gap-[15px]">
+                      <figure
+                        class="w-[59px] h-[59px] rounded-full overflow-hidden border-[2px] border-[#FFD41D]"
+                      >
+                        <img
+                          src="assets/images/user.webp"
+                          alt="James Smith"
+                          class="w-full h-full"
+                        />
+                      </figure>
+                      <div class="flex flex-col">
+                        <strong
+                          class="text-[#26252C] text-[15px] font-bold mb-[4px]"
+                          >James Smith</strong
+                        >
+                        <small class="text-[#676776] text-[13px]"
+                          >CEO | ICICI Prudentials</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-name="Jenifer Walton"
+                  data-role="Product Director | Housing"
+                  data-image="assets/images/user-2.webp"
+                  data-image-alt="Jenifer Walton"
+                >
+                  <div
+                    class="testimonial-main-card bg-white p-[61px_65px_67px_47px] rounded-[50px] shadow-[0px_60px_120px_0px_#A2A6B840]"
+                  >
+                    <p
+                      class="pb-[32px] border-b border-[#B4B6BD] text-[14px] landig-[24px] text-secondary"
+                    >
+                      Working with this team has been smooth from planning to
+                      delivery. Product quality has been consistent, and
+                      communication is clear and quick. We trust them for
+                      regular supply without worrying about freshness.
+                    </p>
+                    <div class="mt-[37px] flex items-center gap-[15px]">
+                      <figure
+                        class="w-[59px] h-[59px] rounded-full overflow-hidden border-[2px] border-[#FFD41D]"
+                      >
+                        <img
+                          src="assets/images/user-2.webp"
+                          alt="Jenifer Walton"
+                          class="w-full h-full"
+                        />
+                      </figure>
+                      <div class="flex flex-col">
+                        <strong
+                          class="text-[#26252C] text-[15px] font-bold mb-[4px]"
+                          >Jenifer Walton</strong
+                        >
+                        <small class="text-[#676776] text-[13px]"
+                          >Product Director | Housing</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  data-name="Rahul Verma"
+                  data-role="Operations Head | Retail"
+                  data-image="assets/images/user.webp"
+                  data-image-alt="Rahul Verma"
+                >
+                  <div
+                    class="testimonial-main-card bg-white p-[61px_65px_67px_47px] rounded-[50px] shadow-[0px_60px_120px_0px_#A2A6B840]"
+                  >
+                    <p
+                      class="pb-[32px] border-b border-[#B4B6BD] text-[14px] landig-[24px] text-secondary"
+                    >
+                      They delivered exactly what was promised and stayed
+                      flexible whenever we needed small customizations. The team
+                      focuses on detail and timelines, which made the process
+                      reliable for us.
+                    </p>
+                    <div class="mt-[37px] flex items-center gap-[15px]">
+                      <figure
+                        class="w-[59px] h-[59px] rounded-full overflow-hidden border-[2px] border-[#FFD41D]"
+                      >
+                        <img
+                          src="assets/images/user.webp"
+                          alt="Rahul Verma"
+                          class="w-full h-full"
+                        />
+                      </figure>
+                      <div class="flex flex-col">
+                        <strong
+                          class="text-[#26252C] text-[15px] font-bold mb-[4px]"
+                          >Rahul Verma</strong
+                        >
+                        <small class="text-[#676776] text-[13px]"
+                          >Operations Head | Retail</small
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Carousel-Slider -->
-                     <!-- Carousel-Slider -->
-            <div class="bg-white p-[61px_65px_67px_47px] rounded-[50px] shadow-[0px_60px_120px_0px_#A2A6B840] relative z-[-1] transform -translate-y-[46%]">
-              <p
-                class="pb-[32px] border-b border-[#B4B6BD] text-[14px] landig-[24px] text-secondary"
-              >
-                Flipspaces came in as an one-stop solution for all our oﬃce
-                expansion needs. They understood what we needed from the outset.
-                They were prompt in understanding our requirements and turned it
-                into something amazing. What stands them apart is the Virtual
-                Reality Technology that helped us visualize the future oﬃce
-                space and make changes in real time, thus saving a lot of our
-                time.
-              </p>
-
-              <div class="mt-[37px] flex items-center gap-[15px]">
-                <figure
-                  class="w-[59px] h-[59px] rounded-full overflow-hidden border-[2px] border-[#FFD41D]"
-                >
-                  <img
-                    src="assets/images/user.webp"
-                    alt="user"
-                    class="w-full h-full"
-                  />
-                </figure>
-                <div class="flex flex-col">
-                  <strong class="text-[#26252C] text-[15px] font-bold mb-[4px]"
-                    >James Smith</strong
+              <div class="testimonial-preview-card bg-white p-[40px_47px_33px] rounded-[42px] shadow-[0px_40px_80px_0px_#A2A6B820]">
+                <div class="pt-[28px] border-t border-[#D7DAE3] flex items-center gap-[15px] opacity-40">
+                  <figure
+                    class="w-[45px] h-[45px] rounded-full overflow-hidden border border-[#C7CBD8]"
                   >
-                  <small class="text-[#676776] text-[13px]">CEO | icici Prudentials</small>
+                    <img
+                      data-preview-image
+                      src="assets/images/user-2.webp"
+                      alt="Jenifer Walton"
+                      class="w-full h-full"
+                    />
+                  </figure>
+                  <div class="flex flex-col">
+                    <strong data-preview-name class="text-[#26252C] text-[15px] font-normal mb-[4px]"
+                      >Jenifer Walton</strong
+                    >
+                    <small data-preview-role class="text-[#A2A4AF] text-[13px]">Product Director | Housing</small>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Carousel-Slider -->
           </div>
         </div>
       </div>
@@ -804,6 +894,7 @@
 
     <!-- Testimonials -->
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/js/custom.js"></script>
   </body>
 </html>
