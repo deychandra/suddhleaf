@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   initTestimonialSwiper();
+  initFaqAccordion();
 
   var tabButtons = Array.from(document.querySelectorAll(".js-tab-btn"));
   var tabContent = document.getElementById("product-tab-content");
@@ -222,6 +223,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setActiveTab(tabButtons[0].dataset.tab);
 });
+
+function initFaqAccordion() {
+  var faqItems = Array.from(document.querySelectorAll(".js-faq-item"));
+  if (!faqItems.length) {
+    return;
+  }
+
+  faqItems.forEach(function (item, index) {
+    var toggleButton = item.querySelector(".js-faq-toggle");
+    var answer = item.querySelector(".js-faq-answer");
+
+    if (!toggleButton || !answer) {
+      return;
+    }
+
+    var answerId = answer.id || "faq-answer-" + (index + 1);
+    answer.id = answerId;
+    toggleButton.setAttribute("aria-controls", answerId);
+
+    toggleButton.addEventListener("click", function () {
+      var isOpen = item.classList.contains("is-open");
+
+      faqItems.forEach(function (otherItem) {
+        var otherButton = otherItem.querySelector(".js-faq-toggle");
+        var otherAnswer = otherItem.querySelector(".js-faq-answer");
+        if (!otherButton || !otherAnswer) {
+          return;
+        }
+
+        otherItem.classList.remove("is-open");
+        otherAnswer.classList.add("hidden");
+        otherButton.setAttribute("aria-expanded", "false");
+      });
+
+      if (!isOpen) {
+        item.classList.add("is-open");
+        answer.classList.remove("hidden");
+        toggleButton.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
 
 function initTestimonialSwiper() {
   if (typeof window.Swiper !== "function") {

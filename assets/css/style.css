@@ -65,3 +65,16 @@ a {
 .testimonial-divider::after {
   bottom: -6px;
 }
+
+.js-faq-toggle {
+  cursor: pointer;
+}
+
+.js-faq-arrow {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.js-faq-item.is-open .js-faq-arrow {
+  transform: rotate(180deg);
+}
