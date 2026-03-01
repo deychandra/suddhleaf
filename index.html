@@ -49,22 +49,39 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   </head>
 
-  <body>
-    <header>
+  <body class="overflow-x-hidden">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md">
       <div
-        class="max-w-[1490px] w-full mx-auto py-[20px] border-b border-[#C5C6D2]"
+        class="max-w-[1490px] w-full mx-auto py-[16px] px-4 sm:px-6 lg:px-8 border-b border-[#C5C6D2]"
       >
-        <div class="flex justify-between items-center">
-          <a href="index1.html">
+        <div class="relative flex justify-between items-center gap-4">
+          <a href="index.html">
             <img
               src="assets/images/site-logo.webp"
               alt="logo"
               loading="lazy"
-              class="max-w-[109px] w-full"
+              class="max-w-[80px] lg:max-w-[109px] w-full"
             />
           </a>
-          <div class="menu">
-            <ul class="flex items-center gap-[50px] font-roboto">
+
+          <button
+            type="button"
+            id="mobile-menu-button"
+            class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-[#C5C6D2] text-secondary"
+            aria-controls="site-menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <nav
+            id="site-menu"
+            class="menu hidden lg:block absolute lg:static top-full left-0 right-0 mt-[16px] lg:mt-0 bg-white lg:bg-transparent border border-[#E6E7EF] lg:border-0  shadow-lg lg:shadow-none p-4 lg:p-0"
+          >
+            <ul
+              class="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-[38px] xl:gap-[50px] font-roboto"
+            >
               <li>
                 <a
                   href="#"
@@ -103,43 +120,43 @@
               <li>
                 <a
                   href="#"
-                  class="bg-accent font-bold text-[14px] leading-[178%] tracking-[0.01em] py-[16px] px-[23px] rounded-full"
+                  class="bg-accent font-bold text-[14px] leading-[178%] tracking-[0.01em] py-[12px] px-[20px] rounded-full inline-flex"
                   >Contact Us</a
                 >
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
 
     <section
-      class="pt-[67px] pb-[207px] bg-no-repeat bg-center"
+      class="pt-[67px] pb-[207px] bg-no-repeat bg-center "
       style="background-image: url(assets/images/banner-overlay.webp)"
     >
-      <div class="max-w-[1490px] w-full mx-auto">
-        <div class="flex items-center">
-          <div class="max-w-[853px] w-full">
+      <div class="max-w-[1490px] w-full mx-auto  px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center flex-col-reverse lg:flex-row">
+          <div class="max-w-full xl:max-w-[853px] max-w-[563px] w-full">
             <img
               src="assets/images/banner.webp"
               alt="banner"
               loading="lazy"
-              class="max-w-full"
+              class="max-w-full w-full"
             />
           </div>
 
-          <div class="flex-1 pl-[95px]">
+          <div class="flex-1 xl:pl-[95px]  lg:pl-[30px] lg:text-left text-center mb-10 lg:mb-0">
             <strong class="text-secondary text-[32px] font-bold"
               >Welcome to</strong
             >
             <h1
-              class="bg-gradient-to-r from-[#2C7E64] to-[#086331] bg-clip-text text-transparent font-bold text-[96px] leading-[120px] tracking-[-0.02em] mb-[37px]"
+              class="bg-gradient-to-r from-[#2C7E64] to-[#086331] bg-clip-text text-transparent font-bold text-[70px] xl:text-[96px] leading-[120px] tracking-[-0.02em] xl:mb-[37px]"
             >
               Suddhleaf
             </h1>
 
             <span
-              class="max-w-[218px] w-full text-secondary text-[16px] font-semibold landig-[24px] mb-[20px] block font-poppins"
+              class="max-w-[218px] w-full text-secondary text-[16px] font-semibold landig-[24px] mb-[20px] block font-poppins lg:ml-0 lg:mr-0 ml-auto mr-auto "
             >
               Grown locally in Kolkata Delivered fresh every week
             </span>
@@ -150,7 +167,7 @@
               tender stage
             </p>
 
-            <div class="mt-[66px]">
+            <div class="xl:mt-[66px] mt-[30px]">
               <a
                 href="#"
                 class="bg-accent text-[18px] py-[7px] pr-[7px] pl-[25px] rounded-full inline-flex items-center gap-[14px] text-dark font-semibold"
@@ -187,7 +204,7 @@
       </div>
     </section>
 
-    <section class="relative">
+    <section class="relative hidden">
       <div class="max-w-[1490px] w-full mx-auto mt-[-80px]">
         <div class="flex items-center">
           <div
@@ -308,7 +325,7 @@
       </div>
     </section>
 
-    <section class="pb-[127px] bg-white relative overflow-hidden">
+    <section class="pb-[127px] bg-white relative overflow-hidden hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <div class="mt-[-65px] pt-[67px]">
           <!-- tab-button -->
@@ -445,7 +462,7 @@
 
     <!-- Why Choose Us -->
 
-    <section class="pt-[111px]">
+    <section class="pt-[111px] hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <div class="text-center max-w-[651px] w-full mx-auto mb-[70px]">
           <h2
@@ -570,7 +587,7 @@
 
     <!-- How It Works -->
 
-    <section class="pt-[77px] pb-[126px] relative overflow-hidden">
+    <section class="pt-[77px] pb-[126px] relative overflow-hidden hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <div class="text-center max-w-[651px] w-full mx-auto mb-[70px]">
           <h2
@@ -684,7 +701,7 @@
 
     <!-- Testimonials -->
 
-    <section class="pt-[160px] pb-[158px] relative overflow-hidden">
+    <section class="pt-[160px] pb-[158px] relative overflow-hidden hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <div
           class="testimonial-layout grid grid-cols-1 lg:grid-cols-2 gap-[50px] lg:gap-[80px] relative"
@@ -934,7 +951,7 @@
     <!-- Testimonials -->
 
     <!-- Frequently Asked Questions -->
-    <section class="pt-[101px] pb-[96px]">
+    <section class="pt-[101px] pb-[96px] hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <h2 class="text-[42px] font-semibold text-[#26252C] mb-[35px]">
           Frequently Asked Questions
@@ -1218,7 +1235,7 @@
     <!-- Frequently Asked Questions -->
 
     <!-- Get in touch with us -->
-    <section class="pt-[56px] pb-[76px] relative">
+    <section class="pt-[56px] pb-[76px] relative hidden">
       <div class="absolute top-0 left-0 z-[-1] w-full h-full">
         <img
           src="assets/images/get-in-touch-banner.png"
@@ -1348,7 +1365,7 @@
 
     <!-- footer -->
 
-    <footer class="bg-white">
+    <footer class="bg-white hidden">
       <div class="max-w-[1490px] w-full mx-auto">
         <div class="flex pt-[13px] pb-[20px] justify-between">
           <div>
@@ -1438,6 +1455,31 @@
     <!-- footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const siteMenu = document.getElementById("site-menu");
+
+      if (mobileMenuButton && siteMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = !siteMenu.classList.contains("hidden");
+          siteMenu.classList.toggle("hidden", isOpen);
+          mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+          mobileMenuButton.innerHTML = isOpen
+            ? '<i class="fa-solid fa-bars"></i>'
+            : '<i class="fa-solid fa-xmark"></i>';
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 1024) {
+            siteMenu.classList.remove("hidden");
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+            mobileMenuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+          } else {
+            siteMenu.classList.add("hidden");
+          }
+        });
+      }
+    </script>
     <script src="assets/js/custom.js"></script>
   </body>
 </html>
