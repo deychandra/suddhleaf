@@ -156,7 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return (
       '<div class="border border-[#C1CBDE] rounded-[40px]">' +
       '<figure class="block mb-[26px] rounded-[38px] overflow-hidden">' +
-      '<img src="' +
+      '<img class="w-full" src="' +
+    
       product.image +
       '" alt="' +
       product.title +

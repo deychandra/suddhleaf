@@ -78,3 +78,11 @@ a {
 .js-faq-item.is-open .js-faq-arrow {
   transform: rotate(180deg);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
