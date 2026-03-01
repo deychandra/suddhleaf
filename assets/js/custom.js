@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function productCardMarkup(product) {
     return (
       '<div class="border border-[#C1CBDE] rounded-[40px]">' +
-      '<figure class="block mb-[26px] rounded-[38px] overflow-hidden">' +
+      '<figure class="block sm:mb-[26px] mb-[15px] rounded-[38px] overflow-hidden">' +
       '<img class="w-full" src="' +
     
       product.image +
@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
       product.title +
       '" loading="lazy" />' +
       "</figure>" +
-      '<div class="p-[0px_15px_62px] text-center">' +
-      '<h3 class="text-[24px] font-semibold text-darklight mb-[10px]">' +
+      '<div class="sm:p-[0px_15px_62px] p-[0px_15px_20px] text-center">' +
+      '<h3 class="sm:text-[24px] text-[18px] font-semibold text-darklight mb-[10px]">' +
       product.title +
       "</h3>" +
       '<p class="text-secondary font-normal text-[14px] landig-[22px] mb-[22px]">' +

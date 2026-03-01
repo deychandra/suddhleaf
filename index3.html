@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuddhLeaf - Fresh Microgreens Delivered Weekly</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#126A3A",
+            secondary: "#2F313C",
+            dark: "#000000",
+            accent: "#FAB61C",
+            darklight: "#2A2D3E",
+          },
+          fontFamily: {
+            roboto: ["Roboto", "sans-serif"],
+            poppins: ["Poppins", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+    /* Scrollbar hide */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ─── NAV ─── */
+    #site-menu.open { display: block !important; }
+
+    /* ─── HERO ─── */
+    .hero-section {
+      background: linear-gradient(135deg, #f0faf4 0%, #e8f7ee 40%, #f5fff8 100%);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section { padding: 60px 0 40px; min-height: auto; }
+    }
+
+    /* ─── GRADIENT HEADING ─── */
+    .grad-green {
+      background: linear-gradient(135deg, #2C7E64, #086331);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .grad-green-top {
+      background: linear-gradient(to top, #044A23 18%, #34AD6A 56%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── CTA BUTTON ─── */
+    .cta-btn {
+      background: #FAB61C;
+      font-size: 16px;
+      padding: 6px 6px 6px 22px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #000;
+      font-weight: 600;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(250,182,28,.45); }
+    .cta-btn .icon {
+      background: #fff;
+      border-radius: 9999px;
+      width: 42px; height: 42px;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── PRODUCT CARDS ─── */
+    .product-card {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 32px 72px rgba(0,0,0,.12); }
+    .product-card img { width: 100%; height: 220px; object-fit: cover; }
+    .product-card .info { padding: 20px 24px 24px; }
+
+    @media (max-width: 480px) {
+      .product-card img { height: 180px; }
+    }
+
+    /* ─── WHY CARDS ─── */
+    .why-card {
+      border-radius: 40px;
+      border: 1px solid #C1CBDE;
+      box-shadow: 0 40px 70px rgba(225,225,246,.62);
+      padding: 40px 24px 28px;
+      text-align: center;
+      background: #fff;
+      transition: transform .3s;
+    }
+    .why-card:hover { transform: translateY(-4px); }
+
+    /* ─── HOW IT WORKS ─── */
+    .step-connector {
+      position: absolute;
+      top: 44px;
+      height: 1px;
+      background: #C5C6D2;
+      z-index: 0;
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    .testimonial-card {
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 40px 100px rgba(162,166,184,.25);
+      padding: 44px 40px 48px;
+    }
+
+    @media (max-width: 640px) {
+      .testimonial-card { padding: 32px 24px 36px; border-radius: 28px; }
+    }
+
+    /* ─── FAQ ─── */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, opacity .4s ease; opacity: 0; }
+    .faq-item.open .faq-answer { max-height: 400px; opacity: 1; }
+    .faq-arrow { transition: transform .3s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    /* ─── FOOTER ─── */
+    footer { background: #0f2d1a; color: #fff; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp .65s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .22s; }
+    .delay-3 { animation-delay: .34s; }
+    .delay-4 { animation-delay: .46s; }
+
+    /* ─── TAB BUTTON ─── */
+    .tab-btn {
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      color: #484A57;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tab-btn.active {
+      background: #FAB61C;
+      color: #fff;
+    }
+
+    /* ─── MOBILE HERO LAYOUT ─── */
+    @media (max-width: 1023px) {
+      .hero-content-wrap { flex-direction: column !important; }
+      .hero-text { text-align: center; margin-bottom: 0; order: 1; }
+      .hero-img-wrap { order: 2; margin-bottom: 24px; }
+      .hero-cta-wrap { justify-content: center; }
+    }
+
+    /* section padding adjustment on small screens */
+    @media (max-width: 640px) {
+      section { padding-left: 16px !important; padding-right: 16px !important; }
+    }
+
+    /* Swiper testimonial */
+    .testimonial-swiper .swiper-slide { height: auto; }
+
+    /* About card fancy rounded */
+    .about-card {
+      border-radius: 60px;
+      padding: 60px 40px;
+      box-shadow: 0 40px 100px rgba(230,230,244,.85);
+    }
+    @media (max-width: 640px) {
+      .about-card { border-radius: 36px; padding: 40px 28px; }
+    }
+
+    /* sticky header blur */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8e9f1;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden text-secondary">
+
+<!-- ═══════════════════════  HEADER  ═══════════════════════ -->
+<header>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="flex items-center justify-between py-4">
+
+      <!-- Logo -->
+      <a href="#" class="flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+            <i class="fa-solid fa-leaf text-white text-sm"></i>
+          </div>
+          <span class="font-poppins font-bold text-xl text-darklight tracking-tight">SuddhLeaf</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8 font-roboto">
+        <a href="#home"     class="font-bold   text-sm text-secondary hover:text-primary transition-colors">Home</a>
+        <a href="#about"    class="font-normal text-sm text-secondary hover:text-primary transition-colors">About SuddhLeaf</a>
+        <a href="#products" class="font-normal text-sm text-secondary hover:text-primary transition-colors">Our Products</a>
+        <a href="#why"      class="font-normal text-sm text-secondary hover:text-primary transition-colors">Why Choose Us</a>
+        <a href="#how"      class="font-normal text-sm text-secondary hover:text-primary transition-colors">How It Works</a>
+        <a href="#contact"  class="bg-accent text-sm font-bold py-2.5 px-5 rounded-full hover:opacity-90 transition-opacity">Contact Us</a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-button" class="lg:hidden w-10 h-10 rounded-md border border-gray-200 flex items-center justify-center text-secondary" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="site-menu" class="hidden lg:hidden pb-4">
+      <nav class="flex flex-col gap-1 font-roboto border-t border-gray-100 pt-4">
+        <a href="#home"     class="font-bold   text-sm py-2 px-3 rounded-lg hover:bg-gray-50">Home</a>
+        <a href="#about"    class="font-normal text-sm py-2 px-3 rounded-lg hover:bg-gray-50">About SuddhLeaf</a>
+        <a href="#products" class="font-normal text-sm py-2 px-3 rounded-lg hover:bg-gray-50">Our Products</a>
+        <a href="#why"      class="font-normal text-sm py-2 px-3 rounded-lg hover:bg-gray-50">Why Choose Us</a>
+        <a href="#how"      class="font-normal text-sm py-2 px-3 rounded-lg hover:bg-gray-50">How It Works</a>
+        <a href="#contact"  class="mt-2 bg-accent font-bold text-sm py-2.5 px-5 rounded-full text-center">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════  HERO  ═══════════════════════ -->
+<section id="home" class="hero-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
+    <div class="hero-content-wrap flex items-center gap-10">
+
+      <!-- Image -->
+      <div class="hero-img-wrap w-full lg:max-w-[520px] flex-shrink-0">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-green-200 rounded-[48px] scale-95 translate-y-4 opacity-60 blur-2xl"></div>
+          <div class="relative bg-gradient-to-br from-[#d9f5e5] to-[#b8edce] rounded-[48px] p-8 sm:p-12 flex items-center justify-center min-h-[260px] sm:min-h-[360px]">
+            <div class="text-center">
+              <div class="text-8xl sm:text-9xl mb-4">🌱</div>
+              <p class="text-primary font-semibold text-sm opacity-70">Farm-fresh • Chemical-free</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="hero-text flex-1">
+        <span class="text-secondary font-bold text-lg sm:text-2xl block animate-fade-up">Welcome to</span>
+        <h1 class="grad-green font-bold text-[64px] sm:text-[80px] lg:text-[100px] leading-none tracking-tight my-2 animate-fade-up delay-1">
+          Suddhleaf
+        </h1>
+        <p class="text-secondary font-semibold text-sm sm:text-base max-w-[240px] mx-auto lg:mx-0 mb-4 animate-fade-up delay-2">
+          Grown locally in Kolkata · Delivered fresh every week
+        </p>
+        <p class="text-secondary text-sm sm:text-base leading-relaxed max-w-[420px] mx-auto lg:mx-0 animate-fade-up delay-3">
+          <strong>Suddhleaf</strong> microgreens are grown without chemicals, delivering peak nutrition and fresh, intense flavor in every bite. Harvested at their most tender stage.
+        </p>
+        <div class="hero-cta-wrap flex mt-8 animate-fade-up delay-4">
+          <a href="#products" class="cta-btn">
+            Shop Now
+            <span class="icon">
+              <svg viewBox="0 0 22 22" fill="none" class="w-5 h-5"><path d="M13.2 5.4L18.8 11l-5.6 5.6" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.2 11h15.4" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  ABOUT  ═══════════════════════ -->
+<section id="about" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
+      <!-- Card -->
+      <div class="about-card bg-white w-full lg:max-w-[480px] flex-shrink-0">
+        <h4 class="text-primary text-2xl sm:text-3xl font-semibold">About</h4>
+        <h2 class="text-darklight text-[40px] sm:text-[52px] font-semibold leading-none mt-1 mb-4">SuddhLeaf</h2>
+        <p class="text-secondary text-base sm:text-lg leading-relaxed">Chemical-free microgreens bursting with nutrition and flavor</p>
+        <p class="text-primary text-base sm:text-lg font-medium italic mt-2 font-roboto">Clean Greens. Big Flavor</p>
+        <div class="mt-10 flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+            <i class="fa-solid fa-leaf text-white text-xs"></i>
+          </div>
+          <span class="font-bold text-lg text-darklight tracking-tight">SuddhLeaf</span>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-4">
+          <i class="fa-solid fa-leaf text-primary text-lg"></i>
+        </div>
+        <h3 class="text-secondary font-semibold text-lg sm:text-xl mb-4">Grown locally in Kolkata, Delivered fresh every week</h3>
+        <p class="text-secondary text-sm sm:text-base leading-relaxed mb-4">
+          SuddhLeaf is committed to bringing you the freshest, most wholesome microgreens grown with care and integrity. We cultivate our greens using completely chemical-free methods, allowing nature to do what it does best—produce food that is rich in nutrients, vibrant in color, and full of natural flavor.
+        </p>
+        <p class="text-secondary text-sm sm:text-base leading-relaxed">
+          Our microgreens are harvested fresh every day at peak maturity, preserving their exceptional taste and nutritional value. From our local farm, they are delivered directly to you, minimizing handling time and ensuring maximum freshness.
+        </p>
+        <h4 class="mt-5 text-secondary font-bold text-base sm:text-lg">Fresh. Local. Healthy — that's the SuddhLeaf promise</h4>
+        <div class="mt-8">
+          <a href="#" class="cta-btn">
+            Read Our Story
+            <span class="icon">
+              <svg viewBox="0 0 22 22" fill="none" class="w-5 h-5"><path d="M13.2 5.4L18.8 11l-5.6 5.6" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.2 11h15.4" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  PRODUCTS  ═══════════════════════ -->
+<section id="products" class="py-16 sm:py-24 bg-[#f8fdf9]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <div class="text-center mb-12">
+      <p class="text-secondary text-base sm:text-lg mb-2">Pure, <strong>chemical-free microgreens</strong> delivering maximum nutrition and bold taste</p>
+      <h2 class="grad-green-top font-bold text-6xl sm:text-8xl lg:text-[120px] leading-none">Products</h2>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 mb-10 justify-start sm:justify-center" id="product-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="pea">Pea</button>
+      <button class="tab-btn" data-tab="radish">Radish</button>
+      <button class="tab-btn" data-tab="sunflower">Sunflower</button>
+      <button class="tab-btn" data-tab="wheatgrass">Wheatgrass</button>
+      <button class="tab-btn" data-tab="broccoli">Broccoli</button>
+      <button class="tab-btn" data-tab="mustard">Mustard</button>
+    </div>
+
+    <!-- Cards -->
+    <div id="product-tab-content" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Populated by JS -->
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="#" class="cta-btn">
+        View All Products
+        <span class="icon">
+          <svg viewBox="0 0 22 22" fill="none" class="w-5 h-5"><path d="M13.2 5.4L18.8 11l-5.6 5.6" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.2 11h15.4" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  WHY CHOOSE US  ═══════════════════════ -->
+<section id="why" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="grad-green font-bold text-5xl sm:text-[64px] leading-tight tracking-tight mb-5">Why Choose Us</h2>
+      <p class="text-secondary text-sm sm:text-base leading-relaxed">
+        <strong>Suddhleaf</strong> microgreens are grown without chemicals, delivering peak nutrition and fresh, intense flavor in every bite. Harvested at their most tender stage.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pb-16 border-b border-gray-200">
+
+      <div class="why-card">
+        <div class="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
+          <i class="fa-solid fa-flask-vial text-primary text-2xl"></i>
+        </div>
+        <h4 class="text-darklight font-semibold text-xl mb-4">Chemical-Free</h4>
+        <p class="text-secondary text-sm leading-relaxed">Grown without harmful chemicals or synthetic additives, ensuring a natural, safe, and healthier choice for everyday consumption.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
+          <i class="fa-solid fa-heart-pulse text-primary text-2xl"></i>
+        </div>
+        <h4 class="text-darklight font-semibold text-xl mb-4">Nutrient Dense</h4>
+        <p class="text-secondary text-sm leading-relaxed">Packed with essential vitamins, minerals, fiber, and protein—while low in calories—to support overall health and sustained energy.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
+          <i class="fa-solid fa-truck-fast text-primary text-2xl"></i>
+        </div>
+        <h4 class="text-darklight font-semibold text-xl mb-4">Same-Day Delivery</h4>
+        <p class="text-secondary text-sm leading-relaxed">Get your orders delivered on the very same day—fast, reliable, and convenient service so you receive what you need without delay.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
+          <i class="fa-solid fa-seedling text-primary text-2xl"></i>
+        </div>
+        <h4 class="text-darklight font-semibold text-xl mb-4">Locally Grown</h4>
+        <p class="text-secondary text-sm leading-relaxed">Fresh produce cultivated in Kolkata, ensuring better taste, higher nutrition, and support for the local community while reducing impact.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  HOW IT WORKS  ═══════════════════════ -->
+<section id="how" class="py-16 sm:py-24 bg-[#f8fdf9]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="grad-green font-bold text-5xl sm:text-[64px] leading-tight tracking-tight mb-5">How It Works</h2>
+      <p class="text-secondary text-sm sm:text-base leading-relaxed">
+        <strong>Suddhleaf</strong> microgreens are grown without chemicals, delivering peak nutrition and fresh, intense flavor in every bite. Harvested at their most tender stage.
+      </p>
+    </div>
+
+    <!-- Steps – horizontal scroll on mobile, 3-col on desktop -->
+    <div class="flex lg:grid lg:grid-cols-3 gap-8 overflow-x-auto no-scrollbar pb-4 lg:pb-0 relative">
+
+      <!-- Connector line (desktop only) -->
+      <div class="hidden lg:block absolute top-10 left-[20%] right-[20%] h-px bg-gray-200"></div>
+
+      <div class="text-center min-w-[240px] lg:min-w-0 relative">
+        <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-6 relative z-10">
+          <i class="fa-solid fa-plant-wilt text-white text-2xl"></i>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-accent text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm">1</div>
+        <h4 class="font-poppins text-xl text-darklight font-semibold mb-3">We Grow</h4>
+        <p class="text-secondary text-sm leading-relaxed max-w-[260px] mx-auto">We cultivate fresh, healthy, and sustainable microgreens using natural methods, ensuring quality nutrition from seed to harvest.</p>
+      </div>
+
+      <div class="text-center min-w-[240px] lg:min-w-0 relative">
+        <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-6 relative z-10">
+          <i class="fa-solid fa-scissors text-white text-2xl"></i>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-accent text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm">2</div>
+        <h4 class="font-poppins text-xl text-darklight font-semibold mb-3">We Harvest</h4>
+        <p class="text-secondary text-sm leading-relaxed max-w-[260px] mx-auto">Harvested fresh daily at peak maturity to preserve exceptional taste and maximum nutritional value in every batch.</p>
+      </div>
+
+      <div class="text-center min-w-[240px] lg:min-w-0 relative">
+        <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-6 relative z-10">
+          <i class="fa-solid fa-box-open text-white text-2xl"></i>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-accent text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm">3</div>
+        <h4 class="font-poppins text-xl text-darklight font-semibold mb-3">We Deliver Fresh to You</h4>
+        <p class="text-secondary text-sm leading-relaxed max-w-[260px] mx-auto">Delivered directly from our Kolkata farm to your doorstep, minimizing handling time and ensuring maximum freshness.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  TESTIMONIALS  ═══════════════════════ -->
+<section id="testimonials" class="py-16 sm:py-24 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+      <!-- Left -->
+      <div>
+        <p class="text-darklight text-lg font-medium mb-3">Testimonials</p>
+        <h2 class="grad-green font-bold text-4xl sm:text-5xl leading-tight tracking-tight mb-5">What our Clients Say</h2>
+        <p class="text-[#4D4D59] text-sm sm:text-base leading-relaxed max-w-md">Our clients appreciate our reliability, quality, and attention to detail. Their positive feedback reflects our commitment to exceeding expectations.</p>
+
+        <!-- Nav buttons -->
+        <div class="flex items-center gap-4 mt-8">
+          <button class="testimonial-prev w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          <button class="testimonial-next w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slider -->
+      <div class="swiper testimonial-swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <p class="text-sm leading-relaxed text-secondary pb-6 border-b border-gray-200 mb-6">
+                "Flipspaces came in as a one-stop solution for all our office expansion needs. They understood what we needed from the outset and turned it into something amazing. The Virtual Reality Technology saved a lot of our time."
+              </p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-300 to-green-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">J</div>
+                <div>
+                  <strong class="text-darklight text-sm font-bold block">James Smith</strong>
+                  <small class="text-gray-400 text-xs">CEO | ICICI Prudentials</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <p class="text-sm leading-relaxed text-secondary pb-6 border-b border-gray-200 mb-6">
+                "Working with this team has been smooth from planning to delivery. Product quality has been consistent, and communication is clear and quick. We trust them for regular supply without worrying about freshness."
+              </p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">J</div>
+                <div>
+                  <strong class="text-darklight text-sm font-bold block">Jenifer Walton</strong>
+                  <small class="text-gray-400 text-xs">Product Director | Housing</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <p class="text-sm leading-relaxed text-secondary pb-6 border-b border-gray-200 mb-6">
+                "They delivered exactly what was promised and stayed flexible whenever we needed small customizations. The team focuses on detail and timelines, which made the process reliable for us."
+              </p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">R</div>
+                <div>
+                  <strong class="text-darklight text-sm font-bold block">Rahul Verma</strong>
+                  <small class="text-gray-400 text-xs">Operations Head | Retail</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  FAQ  ═══════════════════════ -->
+<section id="faq" class="py-16 sm:py-24 bg-[#f8fdf9]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <h2 class="text-3xl sm:text-4xl font-semibold text-[#26252C] mb-10">Frequently Asked Questions</h2>
+
+    <div class="space-y-0" id="faq-list">
+
+      <div class="faq-item border-t border-gray-300 py-5 flex items-start justify-between gap-6 cursor-pointer">
+        <div class="flex items-start gap-4 flex-1">
+          <span class="w-4 h-4 min-w-[16px] rounded-full bg-primary mt-1.5"></span>
+          <div>
+            <h4 class="text-[#131735] text-lg sm:text-xl font-semibold">What types of microgreens do you offer?</h4>
+            <p class="faq-answer text-base text-[#4D4D59] leading-relaxed mt-3 pr-2">We offer a wide variety including Pea, Radish, Sunflower, Wheatgrass, Broccoli, and Mustard microgreens. Each variety is grown fresh, chemical-free, and harvested at peak nutrition.</p>
+          </div>
+        </div>
+        <button class="flex-shrink-0 mt-1" aria-label="Toggle">
+          <svg class="faq-arrow w-8 h-8 text-gray-400" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="19" stroke="currentColor" stroke-width="2.5"/><path d="M14.8 18.8L21 25l6.2-6.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="faq-item border-t border-gray-300 py-5 flex items-start justify-between gap-6 cursor-pointer">
+        <div class="flex items-start gap-4 flex-1">
+          <span class="w-4 h-4 min-w-[16px] rounded-full bg-primary mt-1.5"></span>
+          <div>
+            <h4 class="text-[#131735] text-lg sm:text-xl font-semibold">How often do you deliver?</h4>
+            <p class="faq-answer text-base text-[#4D4D59] leading-relaxed mt-3 pr-2">We offer daily fresh harvests and deliver every week within Kolkata. Same-day delivery is available for orders placed before our daily cutoff time.</p>
+          </div>
+        </div>
+        <button class="flex-shrink-0 mt-1" aria-label="Toggle">
+          <svg class="faq-arrow w-8 h-8 text-gray-400" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="19" stroke="currentColor" stroke-width="2.5"/><path d="M14.8 18.8L21 25l6.2-6.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="faq-item border-t border-gray-300 py-5 flex items-start justify-between gap-6 cursor-pointer">
+        <div class="flex items-start gap-4 flex-1">
+          <span class="w-4 h-4 min-w-[16px] rounded-full bg-primary mt-1.5"></span>
+          <div>
+            <h4 class="text-[#131735] text-lg sm:text-xl font-semibold">Are your microgreens certified organic?</h4>
+            <p class="faq-answer text-base text-[#4D4D59] leading-relaxed mt-3 pr-2">While we are not formally certified, we grow 100% chemical-free using natural methods. We are committed to transparency and welcome visitors to see our growing process in person.</p>
+          </div>
+        </div>
+        <button class="flex-shrink-0 mt-1" aria-label="Toggle">
+          <svg class="faq-arrow w-8 h-8 text-gray-400" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="19" stroke="currentColor" stroke-width="2.5"/><path d="M14.8 18.8L21 25l6.2-6.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="faq-item border-t border-gray-300 py-5 flex items-start justify-between gap-6 cursor-pointer">
+        <div class="flex items-start gap-4 flex-1">
+          <span class="w-4 h-4 min-w-[16px] rounded-full bg-primary mt-1.5"></span>
+          <div>
+            <h4 class="text-[#131735] text-lg sm:text-xl font-semibold">Can I place bulk or subscription orders?</h4>
+            <p class="faq-answer text-base text-[#4D4D59] leading-relaxed mt-3 pr-2">Yes! We offer weekly subscription boxes and bulk orders for restaurants, hotels, and health-conscious households. Contact us to discuss customized plans.</p>
+          </div>
+        </div>
+        <button class="flex-shrink-0 mt-1" aria-label="Toggle">
+          <svg class="faq-arrow w-8 h-8 text-gray-400" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="19" stroke="currentColor" stroke-width="2.5"/><path d="M14.8 18.8L21 25l6.2-6.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="faq-item border-t border-b border-gray-300 py-5 flex items-start justify-between gap-6 cursor-pointer">
+        <div class="flex items-start gap-4 flex-1">
+          <span class="w-4 h-4 min-w-[16px] rounded-full bg-primary mt-1.5"></span>
+          <div>
+            <h4 class="text-[#131735] text-lg sm:text-xl font-semibold">How should I store my microgreens?</h4>
+            <p class="faq-answer text-base text-[#4D4D59] leading-relaxed mt-3 pr-2">Keep your microgreens refrigerated in the container provided. They stay fresh for 5–7 days. Avoid washing before storage; rinse just before consuming.</p>
+          </div>
+        </div>
+        <button class="flex-shrink-0 mt-1" aria-label="Toggle">
+          <svg class="faq-arrow w-8 h-8 text-gray-400" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="19" stroke="currentColor" stroke-width="2.5"/><path d="M14.8 18.8L21 25l6.2-6.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#" class="text-[#4F4F5E] underline font-medium text-base sm:text-lg tracking-tight hover:text-primary transition-colors">Load More FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  CONTACT  ═══════════════════════ -->
+<section id="contact" class="py-16 sm:py-24 bg-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+
+      <div class="flex-1">
+        <h2 class="text-white text-3xl sm:text-4xl font-semibold leading-tight mb-3">Get in touch with us.</h2>
+        <p class="text-white/80 text-sm sm:text-base max-w-sm mb-8">Ready to get started? Let's begin with a conversation about how we can help you!</p>
+
+        <div class="flex flex-col sm:flex-row gap-5">
+          <a href="tel:+919831164127" class="flex items-center gap-3 text-white font-medium text-sm sm:text-base">
+            <span class="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-phone text-dark text-sm"></i>
+            </span>
+            +91 9831 1641 27
+          </a>
+          <a href="mailto:contact@SuddhLeaf.com" class="flex items-center gap-3 text-white font-medium text-sm sm:text-base">
+            <span class="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-envelope text-dark text-sm"></i>
+            </span>
+            contact@SuddhLeaf.com
+          </a>
+        </div>
+      </div>
+
+      <div class="text-left lg:text-right">
+        <h3 class="text-white font-semibold text-2xl sm:text-3xl mb-6">Let's talk about your project!</h3>
+        <a href="mailto:contact@SuddhLeaf.com" class="cta-btn">
+          Contact Us
+          <span class="icon">
+            <svg viewBox="0 0 22 22" fill="none" class="w-5 h-5"><path d="M13.2 5.4L18.8 11l-5.6 5.6" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.2 11h15.4" stroke="#FAB61C" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  FOOTER  ═══════════════════════ -->
+<footer class="py-10 bg-[#0f2d1a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/10">
+
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center">
+          <i class="fa-solid fa-leaf text-dark text-sm"></i>
+        </div>
+        <span class="font-bold text-xl text-white tracking-tight">SuddhLeaf</span>
+      </a>
+
+      <nav class="flex flex-wrap gap-x-8 gap-y-2">
+        <a href="#home"     class="text-white/70 text-sm hover:text-white transition-colors">Home</a>
+        <a href="#about"    class="text-white/70 text-sm hover:text-white transition-colors">About</a>
+        <a href="#products" class="text-white/70 text-sm hover:text-white transition-colors">Products</a>
+        <a href="#why"      class="text-white/70 text-sm hover:text-white transition-colors">Why Us</a>
+        <a href="#how"      class="text-white/70 text-sm hover:text-white transition-colors">How It Works</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#" class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-dark hover:opacity-80 transition-opacity"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-dark hover:opacity-80 transition-opacity"><i class="fa-brands fa-instagram text-xs"></i></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-dark hover:opacity-80 transition-opacity"><i class="fa-brands fa-x-twitter text-xs"></i></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-dark hover:opacity-80 transition-opacity"><i class="fa-brands fa-youtube text-xs"></i></a>
+      </div>
+    </div>
+
+    <p class="text-white/40 text-xs text-center mt-6">© 2026 SuddhLeaf. All rights reserved. Grown with love in Kolkata.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════  SCRIPTS  ═══════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// ─── Mobile menu ───
+const mobileBtn  = document.getElementById('mobile-menu-button');
+const siteMenu   = document.getElementById('site-menu');
+const menuIcon   = document.getElementById('menu-icon');
+
+mobileBtn.addEventListener('click', () => {
+  const isOpen = siteMenu.classList.toggle('hidden');
+  menuIcon.className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+});
+// Close on link click
+siteMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    siteMenu.classList.add('hidden');
+    menuIcon.className = 'fa-solid fa-bars';
+  });
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 1024) siteMenu.classList.add('hidden');
+});
+
+// ─── Testimonial Swiper ───
+const tSwiper = new Swiper('.testimonial-swiper', {
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 20,
+  navigation: { prevEl: '.testimonial-prev', nextEl: '.testimonial-next' },
+  autoplay: { delay: 4000, disableOnInteraction: false },
+});
+
+// ─── Products data ───
+const products = {
+  pea:        [{ name:'Green Pea Shoots', price:'₹120/100g', desc:'Sweet, tender shoots packed with vitamins A, C & K. Perfect in salads and stir-fries.', emoji:'🫛' }, { name:'Pea Micro Mix', price:'₹150/150g', desc:'A vibrant blend of pea varieties. Crisp texture with a mild, sweet flavor.', emoji:'🌿' }, { name:'Snow Pea Tendrils', price:'₹180/100g', desc:'Delicate curling tendrils with a fresh, slightly sweet taste loved by chefs.', emoji:'🍃' }],
+  radish:     [{ name:'Red Radish Greens', price:'₹110/100g', desc:'Spicy and bold with a beautiful red stem. Rich in antioxidants and fiber.', emoji:'🌱' }, { name:'Daikon Radish', price:'₹130/100g', desc:'Mild heat with a peppery finish. Excellent for Asian cuisine and sushi.', emoji:'🥗' }, { name:'Purple Radish', price:'₹160/100g', desc:'Stunning purple hue with an earthy, spicy flavor. Visually striking garnish.', emoji:'💜' }],
+  sunflower:  [{ name:'Sunflower Shoots', price:'₹140/100g', desc:'Crunchy, nutty-flavored greens high in Vitamin E and healthy fats.', emoji:'🌻' }, { name:'Sun Sprout Mix', price:'₹165/150g', desc:'Blend of sunflower and complementary greens for a satisfying crunch.', emoji:'☀️' }, { name:'Black Oil Sunflower', price:'₹155/100g', desc:'Rich, buttery flavor with exceptional protein content. Great in smoothies.', emoji:'🌿' }],
+  wheatgrass: [{ name:'Fresh Wheatgrass', price:'₹90/tray', desc:'Detoxifying green powerhouse loaded with chlorophyll, enzymes and amino acids.', emoji:'🌾' }, { name:'Wheatgrass Shots', price:'₹199/week', desc:'Daily delivery of freshly cut wheatgrass — the ultimate morning health ritual.', emoji:'💚' }, { name:'Wheatgrass Powder', price:'₹349/jar', desc:'Concentrated dried wheatgrass powder. Easy to blend into any drink or smoothie.', emoji:'🍵' }],
+  broccoli:   [{ name:'Broccoli Microgreens', price:'₹135/100g', desc:'One of the most nutrient-dense greens available. High sulforaphane content.', emoji:'🥦' }, { name:'Brassica Blend', price:'₹150/100g', desc:'Mix of broccoli and kale microgreens for a powerful nutritional punch.', emoji:'🌱' }, { name:'Sulforaphane Pack', price:'₹220/200g', desc:'Extra-dense broccoli greens harvested for maximum sulforaphane levels.', emoji:'💪' }],
+  mustard:    [{ name:'Yellow Mustard', price:'₹100/100g', desc:'Spicy, tangy greens that add a peppery kick to any dish or sandwich.', emoji:'🌿' }, { name:'Brown Mustard', price:'₹115/100g', desc:'Earthy and bold. Popular in Indian cuisine for its distinctive heat.', emoji:'🍂' }, { name:'Mustard Micro Mix', price:'₹140/120g', desc:'Three mustard varieties blended for a complex, layered spicy flavour.', emoji:'🌶️' }],
+};
+
+function renderProducts(tab) {
+  const container = document.getElementById('product-tab-content');
+  const items = products[tab] || [];
+  container.innerHTML = items.map(p => `
+    <div class="product-card animate-fade-up">
+      <div class="h-48 sm:h-52 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-7xl">${p.emoji}</div>
+      <div class="info">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="font-semibold text-darklight text-base sm:text-lg">${p.name}</h3>
+          <span class="text-primary font-bold text-sm">${p.price}</span>
+        </div>
+        <p class="text-secondary text-sm leading-relaxed mb-4">${p.desc}</p>
+        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all">
+          Order Now <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.tab);
+  });
+});
+renderProducts('pea');
+
+// ─── FAQ accordion ───
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ─── Scroll reveal ───
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.why-card, .product-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
