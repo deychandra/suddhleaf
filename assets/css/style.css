@@ -142,11 +142,54 @@ a {
   animation: dotPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+@keyframes dotPulse {
+  0%,
+  62% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgb(234 142 136 / 70%);
+  }
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+}
 
-
+@keyframes scrollDown {
+  0% {
+    top: -100%;
+    opacity: 1;
+  }
+  60% {
+    top: 100%;
+    opacity: 1;
+  }
+  61% {
+    top: 100%;
+    opacity: 0;
+  }
+  62% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: -100%;
+    opacity: 1;
+  }
+}
 
 @media (max-width: 1480px) {
-.scroll-bar{
-      left: 0px;
+  .scroll-bar {
+    left: 0px;
+  }
 }
+
+@media (max-width: 580px) {
+  .scroll-bar {
+    top: 130px;
+  }
 }
