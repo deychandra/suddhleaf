@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scroll Down Bar – Suddhleaf</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f5f0eb;
+      margin: 0;
+    }
+
+    /* ── Scroll-Down Bar ── */
+    .scroll-bar {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    /* Rotated label */
+    .scroll-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5a5a5a;
+    }
+
+    /* Track line */
+    .scroll-track {
+      position: relative;
+      width: 1px;
+      height: 80px;
+      background: rgba(90, 90, 90, 0.25);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    /* Animated fill */
+    .scroll-fill {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #4a7c59;
+      border-radius: 999px;
+      animation: scrollDown 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes scrollDown {
+      0%   { top: -100%; opacity: 1; }
+      60%  { top: 100%;  opacity: 1; }
+      61%  { top: 100%;  opacity: 0; }
+      62%  { top: -100%; opacity: 0; }
+      100% { top: -100%; opacity: 1; }
+    }
+
+    /* Glowing dot at bottom of track */
+    .scroll-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4a7c59;
+      animation: dotPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 62%  { opacity: 0.25; transform: scale(1); }
+      60%      { opacity: 1;    transform: scale(1.4); box-shadow: 0 0 0 4px rgba(74,124,89,0.2); }
+      100%     { opacity: 0.25; transform: scale(1); }
+    }
+
+    /* ── Demo page ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 80px;
+    }
+
+    .hero-text h2 { font-size: 14px; color: #6b7280; margin: 0 0 4px; font-weight: 400; }
+    .hero-text h1 { font-size: 56px; font-weight: 700; color: #2e5c3a; margin: 0 0 16px; line-height: 1.1; }
+    .hero-text p  { font-size: 14px; color: #4b5563; line-height: 1.7; max-width: 320px; }
+
+    .btn-shop {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: #e8a830;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-shop:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,168,48,0.4);
+    }
+    .btn-shop span {
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────────── SCROLL DOWN BAR ─────────────── -->
+  <div class="scroll-bar">
+    <span class="scroll-label">Scroll Down</span>
+    <div class="scroll-track">
+      <div class="scroll-fill"></div>
+    </div>
+    <div class="scroll-dot"></div>
+  </div>
+
+  <!-- ─────────────── HERO (context) ─────────────── -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Welcome to</h2>
+      <h1>Suddhleaf</h1>
+      <p style="font-weight:600;font-size:13px;color:#374151;margin:0 0 4px">
+        Grown locally in Kolkata<br>Delivered fresh every week
+      </p>
+      <p>
+        <strong>Suddhleaf</strong> microgreens are grown without chemicals,
+        delivering peak nutrition and fresh, intense flavor in every bite.
+        Harvested at their most tender stage.
+      </p>
+      <button class="btn-shop">Shop Now <span>→</span></button>
+    </div>
+  </section>
+
+</body>
+</html>

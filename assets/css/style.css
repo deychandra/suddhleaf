@@ -86,3 +86,59 @@ a {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+
+
+
+.scroll-bar {
+    position: fixed;
+    left: 20px;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
+
+
+.scroll-label {
+writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: #906F81;
+}
+
+
+.scroll-track {
+    position: relative;
+    width: 1px;
+        height: calc(100vh - 360px);
+    background: rgba(90, 90, 90, 0.25);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.scroll-fill {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #4a7c59;
+    border-radius: 999px;
+    animation: scrollDown 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+
+.scroll-dot {
+width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #EA8E88;
+    animation: dotPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
