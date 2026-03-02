@@ -141,3 +141,12 @@ a {
   background: #ea8e88;
   animation: dotPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+
+
+
+@media (max-width: 1480px) {
+.scroll-bar{
+      left: 0px;
+}
+}
