@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   initTestimonialSwiper();
   initFaqAccordion();
-  initPageAnimations();
 
   var tabButtons = Array.from(document.querySelectorAll(".js-tab-btn"));
   var tabContent = document.getElementById("product-tab-content");
@@ -196,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     tabContent.innerHTML = activeProducts.map(productCardMarkup).join("");
-    applyDynamicAnimations(tabContent);
   }
 
   tabButtons.forEach(function (button) {
@@ -226,101 +224,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setActiveTab(tabButtons[0].dataset.tab);
 });
-
-var revealObserver = null;
-
-function initPageAnimations() {
-  initHoverAnimations(document);
-  initScrollReveal(document);
-}
-
-function applyDynamicAnimations(root) {
-  initHoverAnimations(root);
-  initScrollReveal(root);
-}
-
-function initHoverAnimations(root) {
-  var buttonSelectors = [
-    "a.rounded-full",
-    "button.rounded-full",
-    ".js-tab-btn",
-    ".js-faq-toggle",
-    ".testimonial-prev",
-    ".testimonial-next",
-    "#mobile-menu-button",
-  ];
-  var cardSelectors = [
-    ".testimonial-main-card",
-    ".testimonial-preview-card",
-    ".js-faq-item",
-    "#product-tab-content > div",
-    "[class*='shadow-[0px_60px_70px_0px_#E1E1F69E]']",
-  ];
-
-  root
-    .querySelectorAll(buttonSelectors.join(", "))
-    .forEach(function (element) {
-      element.classList.add("anim-button");
-    });
-
-  root.querySelectorAll(cardSelectors.join(", ")).forEach(function (element) {
-    element.classList.add("anim-card");
-  });
-}
-
-function initScrollReveal(root) {
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ) {
-    return;
-  }
-
-  var revealSelectors = [
-    "header",
-    "section > div[class*='max-w-[1490px]']",
-    "section > div[class*='max-w-[1031px]']",
-    "footer > div[class*='max-w-[1490px]']",
-    ".testimonial-main-card",
-    ".testimonial-preview-card",
-    ".js-faq-item",
-    "#product-tab-content > div",
-    "[class*='shadow-[0px_60px_70px_0px_#E1E1F69E]']",
-    "div[class*='min-w-[260px]'][class*='text-center'][class*='relative']",
-  ];
-
-  var revealItems = root.querySelectorAll(revealSelectors.join(", "));
-  if (!revealItems.length) {
-    return;
-  }
-
-  if (!revealObserver) {
-    revealObserver = new IntersectionObserver(
-      function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -12% 0px",
-      }
-    );
-  }
-
-  Array.from(revealItems).forEach(function (item, index) {
-    if (item.classList.contains("anim-reveal")) {
-      return;
-    }
-    item.classList.add("anim-reveal");
-    item.style.setProperty("--anim-delay", String((index % 6) * 70) + "ms");
-    revealObserver.observe(item);
-  });
-}
 
 function initFaqAccordion() {
   var faqItems = Array.from(document.querySelectorAll(".js-faq-item"));
